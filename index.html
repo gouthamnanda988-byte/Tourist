@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TouristSafe — India Tourist Emergency & Weather Alert System</title>
+  <meta name="description" content="A responsive emergency management and weather alert dashboard for tourists traveling across India. Provides tri-lingual hazard advisories, meteorological cards, and verified tourist safety instructions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Emergency & Prototype Banner -->
+  <div class="top-banner" role="region" aria-label="Prototype Notice">
+    <div class="banner-inner container">
+      <div class="banner-text">
+        <span class="banner-tag" data-i18n="hackathon_badge">HACKATHON PROTOTYPE</span>
+        <span data-i18n="banner_notice">SIMULATED SAMPLE DATA ONLY: For real-life emergencies anywhere in India, immediately dial <strong>112</strong>.</span>
+      </div>
+      <div class="banner-actions">
+        <a href="#emergency-helplines" class="banner-helpline-link" data-i18n="view_helplines_btn">Direct Helplines &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Navigation Bar -->
+  <header class="main-header" id="top">
+    <div class="container header-container">
+      <a href="#top" class="brand-logo" aria-label="TouristSafe Home">
+        <div class="logo-icon-wrapper">
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M12 8v4"/>
+            <path d="M12 16h.01"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Tourist<span class="highlight">Safe</span></span>
+          <span class="brand-sub">India Alert Network</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active" data-i18n="nav_home">Home</a></li>
+          <li><a href="#weather-dashboard" class="nav-link" data-i18n="nav_weather">Weather</a></li>
+          <li><a href="#safe-journey-shield" class="nav-link" data-i18n="nav_shield">Safe Journey Shield</a></li>
+          <li><a href="#emergency-alerts" class="nav-link" data-i18n="nav_alerts">Emergency Alerts</a></li>
+          <li><a href="#safe-zones" class="nav-link" data-i18n="nav_safe_zones">Safe Zones & Shelters</a></li>
+          <li><a href="#safety-guide" class="nav-link" data-i18n="nav_safety">Safety Guide</a></li>
+          <li><a href="#emergency-helplines" class="nav-link" data-i18n="nav_helpline">Helplines</a></li>
+          <li><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Utilities -->
+      <div class="header-utils">
+        <!-- Language Selector -->
+        <div class="lang-selector-wrapper">
+          <label for="lang-select" class="visually-hidden">Select Language</label>
+          <div class="lang-select-box">
+            <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <select id="lang-select" class="lang-select" aria-label="Language selector">
+              <option value="en" selected>English</option>
+              <option value="ta">தமிழ் (Tamil)</option>
+              <option value="hi">हिन्दी (Hindi)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- SOS Quick Call Button -->
+        <button type="button" class="sos-nav-btn" id="sos-quick-btn" aria-label="Open emergency SOS modal">
+          <span class="sos-pulse"></span>
+          <svg class="sos-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>
+          <span class="sos-text">SOS 112</span>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Body -->
+  <main id="main-content">
+
+    <!-- Hero & Search Section -->
+    <section class="hero-section" id="home">
+      <div class="container hero-container">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span data-i18n="hero_pill">National Tourist Protection & Weather Vigilance</span>
+        </div>
+        <h1 class="hero-title" data-i18n="hero_title">Travel Across India With Confidence & Live Safety Alerts</h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">Instant meteorological monitoring, regional disaster warnings, and verified survival instructions for India's premier tourist destinations.</p>
+
+        <!-- Search Bar Component -->
+        <div class="search-wrapper">
+          <div class="search-form-wrap">
+            <form class="search-form" id="search-form" role="search" onsubmit="return false;">
+              <div class="search-input-group">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input 
+                  type="text" 
+                  id="city-search-input" 
+                  class="search-input" 
+                  placeholder="Search Indian city or hill station (e.g., Manali, Chennai, Jaipur, Goa)..." 
+                  autocomplete="off"
+                  data-i18n-placeholder="search_placeholder"
+                  aria-label="Search city or tourist destination"
+                >
+                <div class="search-loading-spinner hidden" id="search-spinner" aria-hidden="true"></div>
+                <button type="button" id="clear-search-btn" class="clear-btn" aria-label="Clear search input" title="Clear search">&times;</button>
+              </div>
+              <div class="search-actions">
+                <button type="submit" id="search-btn" class="btn btn-primary search-submit-btn">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                  </svg>
+                  <span data-i18n="search_btn">Check Safety</span>
+                </button>
+                <button type="button" id="gps-btn" class="btn btn-outline gps-locate-btn" title="Simulate Auto-location">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 2v3m0 14v3M2 12h3m14 0h3"/>
+                    <circle cx="12" cy="12" r="8"/>
+                  </svg>
+                  <span data-i18n="gps_btn">Detect City</span>
+                </button>
+              </div>
+            </form>
+
+            <!-- Dynamic Search Results Dropdown from Open-Meteo Geocoding -->
+            <div id="search-results-dropdown" class="search-results-dropdown hidden" role="listbox" aria-label="Location search results">
+              <!-- Populated dynamically via script.js -->
+            </div>
+          </div>
+
+          <!-- Search Auto-suggestions / Popular Destinations -->
+          <div class="quick-destinations">
+            <span class="quick-label" data-i18n="popular_destinations">Popular Hubs:</span>
+            <div class="chip-container" id="city-chips">
+              <!-- Dynamically populated or rendered -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Helplines Summary Cards -->
+        <div class="quick-helplines-strip" role="region" aria-label="Essential emergency contact numbers">
+          <div class="helpline-card emergency-primary">
+            <div class="helpline-num">112</div>
+            <div class="helpline-info">
+              <strong data-i18n="hl_national">National Emergency</strong>
+              <span data-i18n="hl_national_sub">Police, Fire & Medical</span>
+            </div>
+            <a href="tel:112" class="call-btn" aria-label="Call 112">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+            </a>
+          </div>
+
+          <div class="helpline-card">
+            <div class="helpline-num">1363</div>
+            <div class="helpline-info">
+              <strong data-i18n="hl_tourist">Tourist Helpline</strong>
+              <span data-i18n="hl_tourist_sub">24x7 Multi-lingual Govt.</span>
+            </div>
+            <a href="tel:1363" class="call-btn" aria-label="Call 1363">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+            </a>
+          </div>
+
+          <div class="helpline-card">
+            <div class="helpline-num">1078</div>
+            <div class="helpline-info">
+              <strong data-i18n="hl_ndrf">NDRF Disaster Alert</strong>
+              <span data-i18n="hl_ndrf_sub">Disaster Management</span>
+            </div>
+            <a href="tel:1078" class="call-btn" aria-label="Call 1078">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+            </a>
+          </div>
+
+          <div class="helpline-card">
+            <div class="helpline-num">108</div>
+            <div class="helpline-info">
+              <strong data-i18n="hl_medical">Ambulance Service</strong>
+              <span data-i18n="hl_medical_sub">Emergency Health / Trauma</span>
+            </div>
+            <a href="tel:108" class="call-btn" aria-label="Call 108">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- State Indicator: Loading Overlay / Container -->
+    <div id="loading-state" class="state-container loading-state hidden" aria-live="polite">
+      <div class="spinner"></div>
+      <h3 data-i18n="loading_title">Retrieving Regional Meteorological & Safety Feed...</h3>
+      <p data-i18n="loading_sub">Connecting to simulated meteorological telemetry and tourist hazard databases.</p>
+    </div>
+
+    <!-- State Indicator: Error / Not Found Container -->
+    <div id="error-state" class="state-container error-state hidden" role="alert">
+      <div class="state-icon error-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+      </div>
+      <h3 id="error-title" data-i18n="error_title">Destination Not Found</h3>
+      <p id="error-message" data-i18n="error_msg">We could not locate weather and emergency information for this query. Please check spelling or select from our curated list of 12 top Indian tourist circuits.</p>
+      <div class="error-actions">
+        <button type="button" class="btn btn-primary" id="error-reset-btn" data-i18n="error_reset">Reset to Manali (Hill Circuit)</button>
+        <button type="button" class="btn btn-outline" id="error-goa-btn" data-i18n="error_coastal">Switch to Goa (Coastal)</button>
+      </div>
+    </div>
+
+    <!-- Weather & Hazard Dashboard Section -->
+    <section class="dashboard-section" id="weather-dashboard">
+      <div class="container">
+        
+        <!-- Active Location Overview Header -->
+        <div class="location-header-card" id="location-header">
+          <div class="location-primary-info">
+            <div class="location-title-row">
+              <div class="location-name-group">
+                <h2 class="city-name" id="current-city-name">Manali</h2>
+                <span class="state-name" id="current-state-name">Himachal Pradesh, Northern Himalayas</span>
+              </div>
+              <div class="hazard-badge-wrapper">
+                <span class="hazard-status-badge badge-danger" id="current-hazard-badge">
+                  <span class="hazard-dot"></span>
+                  <span id="current-hazard-text">HIGH RISK ADVISORY</span>
+                </span>
+              </div>
+            </div>
+            <p class="location-summary-text" id="current-hazard-summary">
+              Monsoon cloudburst simulation: High risk of landslides along NH-3. Active caution recommended for tourists.
+            </p>
+            <div class="location-meta-tags">
+              <span class="meta-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-i18n="last_updated">Observed:</span> <strong id="current-timestamp">Just now (Live Open-Meteo)</strong>
+              </span>
+              <span class="meta-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="elevation_label">Terrain:</span> <span id="current-terrain">High Altitude Hill Station (2,050m)</span>
+              </span>
+              <span class="meta-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span data-i18n="coordinates_label">Coordinates:</span> <strong id="current-coordinates">32.24°N, 77.19°E</strong>
+              </span>
+            </div>
+          </div>
+          
+          <div class="location-quick-visual">
+            <div class="main-temp-display">
+              <div class="weather-icon-box" id="main-weather-icon-box">
+                <!-- Weather SVG injected via JS -->
+              </div>
+              <div class="temp-numbers">
+                <span class="temp-current" id="main-temp-val">14°C</span>
+                <span class="temp-condition" id="main-condition-text">Heavy Rain & Fog</span>
+              </div>
+            </div>
+            <div class="temp-feels-like">
+              <span data-i18n="feels_like_label">Feels like:</span> <strong id="main-feels-like">12°C</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Primary Metric Cards Grid -->
+        <div class="cards-grid">
+          
+          <!-- Card 1: Temperature -->
+          <div class="metric-card" id="card-temperature">
+            <div class="metric-card-header">
+              <div class="metric-icon-wrap icon-temp">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+                </svg>
+              </div>
+              <div class="metric-heading">
+                <span class="card-eyebrow" data-i18n="metric_temp_eyebrow">Atmospheric Thermal</span>
+                <h3 class="card-title" data-i18n="card_temp_title">Temperature</h3>
+              </div>
+            </div>
+            <div class="metric-main-val">
+              <span class="val-number" id="card-temp-val">14</span>
+              <span class="val-unit">°C</span>
+            </div>
+            <div class="metric-meta-list">
+              <div class="metric-meta-row">
+                <span class="meta-label" data-i18n="temp_range_label">Day Range:</span>
+                <span class="meta-value" id="card-temp-range">11°C — 16°C</span>
+              </div>
+              <div class="metric-meta-row">
+                <span class="meta-label" data-i18n="temp_status_label">Thermal State:</span>
+                <span class="meta-value badge-subtle-cold" id="card-temp-status">Chilly / Mountain Cold</span>
+              </div>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill fill-temp" id="card-temp-bar" style="width: 35%;"></div>
+              </div>
+              <div class="bar-legend">
+                <span>0°C (Cold)</span>
+                <span>25°C (Mild)</span>
+                <span>45°C (Extreme)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Humidity -->
+          <div class="metric-card" id="card-humidity">
+            <div class="metric-card-header">
+              <div class="metric-icon-wrap icon-humidity">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                </svg>
+              </div>
+              <div class="metric-heading">
+                <span class="card-eyebrow" data-i18n="metric_humidity_eyebrow">Moisture Density</span>
+                <h3 class="card-title" data-i18n="card_humidity_title">Humidity</h3>
+              </div>
+            </div>
+            <div class="metric-main-val">
+              <span class="val-number" id="card-humidity-val">92</span>
+              <span class="val-unit">%</span>
+            </div>
+            <div class="metric-meta-list">
+              <div class="metric-meta-row">
+                <span class="meta-label" data-i18n="dew_point_label">Dew Point:</span>
+                <span class="meta-value" id="card-humidity-dew">13°C</span>
+              </div>
+              <div class="metric-meta-row">
+                <span class="meta-label" data-i18n="comfort_label">Comfort Index:</span>
+                <span class="meta-value badge-subtle-alert" id="card-humidity-status">Saturated (High Fog)</span>
+              </div>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill fill-humidity" id="card-humidity-bar" style="width: 92%;"></div>
+              </div>
+              <div class="bar-legend">
+                <span>0% Dry</span>
+                <span>50% Balanced</span>
+                <span>100% Damp</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Rainfall -->
+          <div class="metric-card" id="card-rainfall">
+            <div class="metric-card-header">
+              <div class="metric-icon-wrap icon-rain">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/>
+                  <path d="M8 19v2m8-2v2m-4-1v2"/>
+                </svg>
+              </div>
+              <div class="metric-heading">
+                <span class="card-eyebrow" data-i18n="metric_rain_eyebrow">Precipitation Volume</span>
+                <h3 class="card-title" data-i18n="card_rainfall_title">Rainfall</h3>
+              </div>
+            </div>
+            <div class="metric-main-val">
+              <span class="val-number" id="card-rain-val">74</span>
+              <span class="val-unit">mm</span>
+            </div>
+            <div class="metric-meta-list">
+              <div class="metric-meta-row">
+                <span class="meta-label" data-i18n="rain_prob_label">Rain Probability:</span>
+                <span class="meta-value" id="card-rain-prob">95%</span>
+              </div>
+              <div class="metric-meta-row">
+                <span class="meta-label" data-i18n="rain_intensity_label">Intensity:</span>
+                <span class="meta-value badge-subtle-danger" id="card-rain-intensity">Heavy Downpour</span>
+              </div>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill fill-rain" id="card-rain-bar" style="width: 74%;"></div>
+              </div>
+              <div class="bar-legend">
+                <span>0 mm (None)</span>
+                <span>35 mm (Moderate)</span>
+                <span>100+ mm (Severe)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Wind Speed -->
+          <div class="metric-card" id="card-wind">
+            <div class="metric-card-header">
+              <div class="metric-icon-wrap icon-wind">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/>
+                </svg>
+              </div>
+              <div class="metric-heading">
+                <span class="card-eyebrow" data-i18n="metric_wind_eyebrow">Velocity & Vectors</span>
+                <h3 class="card-title" data-i18n="card_wind_title">Wind Speed</h3>
+              </div>
+            </div>
+            <div class="metric-main-val">
+              <span class="val-number" id="card-wind-val">38</span>
+              <span class="val-unit">km/h</span>
+            </div>
+            <div class="metric-meta-list">
+              <div class="metric-meta-row">
+                <span class="meta-label" data-i18n="wind_dir_label">Direction:</span>
+                <span class="meta-value" id="card-wind-dir">North-North-East (NNE)</span>
+              </div>
+              <div class="metric-meta-row">
+                <span class="meta-label" data-i18n="wind_gust_label">Gust Status:</span>
+                <span class="meta-value badge-subtle-warning" id="card-wind-gust">Strong Mountain Gusts</span>
+              </div>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill fill-wind" id="card-wind-bar" style="width: 48%;"></div>
+              </div>
+              <div class="bar-legend">
+                <span>0 km/h (Calm)</span>
+                <span>40 km/h (Brisk)</span>
+                <span>80+ km/h (Gale)</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Supplementary Secondary Environmental Metrics Row -->
+        <div class="supp-metrics-row">
+          <div class="supp-metric-item">
+            <span class="supp-icon">🌫️</span>
+            <div class="supp-details">
+              <span class="supp-label" data-i18n="aqi_label">Air Quality Index (AQI):</span>
+              <strong id="supp-aqi-val" class="aqi-good">32 (Good & Fresh Mountain Air)</strong>
+            </div>
+          </div>
+          <div class="supp-metric-item">
+            <span class="supp-icon">☀️</span>
+            <div class="supp-details">
+              <span class="supp-label" data-i18n="uv_label">UV Index:</span>
+              <strong id="supp-uv-val">2 of 11 (Low Radiation)</strong>
+            </div>
+          </div>
+          <div class="supp-metric-item">
+            <span class="supp-icon">🧭</span>
+            <div class="supp-details">
+              <span class="supp-label" data-i18n="tourist_activity_label">Tourist Activity Feasibility:</span>
+              <strong id="supp-activity-val" class="activity-caution">Trekking Suspended; Indoor Travel Advised</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Safe Journey Shield: Context-Aware Safety Briefing Section -->
+    <section class="shield-section" id="safe-journey-shield">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-header-block">
+          <div class="section-title-wrap">
+            <span class="section-tag-shield" data-i18n="shield_section_tag">CONTEXT-AWARE SAFETY BRIEFING</span>
+            <h2 class="section-title">
+              <span class="shield-title-icon" aria-hidden="true">🛡️</span>
+              <span data-i18n="shield_section_title">Safe Journey Shield</span>
+            </h2>
+            <p class="section-sub" data-i18n="shield_section_sub">
+              Dynamic risk assessment correlating live meteorological telemetry with your planned tourist activity across Indian terrains.
+            </p>
+          </div>
+
+          <!-- Official Feed Status Banner (Requirement 6) -->
+          <div class="feed-status-badge feed-unconnected" role="status" aria-live="polite">
+            <div class="feed-status-inner">
+              <span class="feed-dot dot-gray" aria-hidden="true"></span>
+              <div class="feed-status-text-wrap">
+                <strong data-i18n="feed_status_title">Official warning feed not connected</strong>
+                <span data-i18n="feed_status_sub">Live NDMA / IMD CAP feeds offline in prototype. Precautions are dynamically calculated from live Open-Meteo telemetry.</span>
+              </div>
+            </div>
+            <a href="https://mausam.imd.gov.in" target="_blank" rel="noopener noreferrer" class="feed-ext-link" data-i18n="feed_check_imd_btn">Check Live IMD &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Telemetry Data Provenance & Timestamp Strip (Requirement 5) -->
+        <div class="shield-provenance-strip">
+          <div class="provenance-item">
+            <svg class="provenance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
+              <path d="M12 12v9m-4-4l4 4 4-4"/>
+            </svg>
+            <span class="provenance-label" data-i18n="shield_source_label">Meteorology Source:</span>
+            <strong id="shield-source-val">Open-Meteo WMO Live API</strong>
+          </div>
+          <div class="provenance-item">
+            <svg class="provenance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span class="provenance-label" data-i18n="shield_time_label">Observed Timestamp:</span>
+            <strong id="shield-time-val">Just now IST</strong>
+          </div>
+          <div class="provenance-item">
+            <svg class="provenance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span class="provenance-label" data-i18n="shield_target_label">Active Destination:</span>
+            <strong id="shield-target-location">Manali</strong>
+          </div>
+        </div>
+
+        <!-- Activity Selector (Requirement 1) -->
+        <div class="activity-selector-card">
+          <div class="activity-selector-header">
+            <h3 class="activity-selector-title" data-i18n="activity_selector_title">Select Your Planned Activity</h3>
+            <p class="activity-selector-desc" data-i18n="activity_selector_desc">Choose what you intend to do to generate a customized, context-aware safety assessment.</p>
+          </div>
+          
+          <div class="activity-button-group" role="radiogroup" aria-label="Tourist Activity Selector">
+            <button type="button" class="activity-btn" data-activity="beach" role="radio" aria-checked="false">
+              <span class="activity-btn-icon">🏖️</span>
+              <span class="activity-btn-label" data-i18n="act_beach">Beach Visit</span>
+            </button>
+            <button type="button" class="activity-btn" data-activity="trekking" role="radio" aria-checked="false">
+              <span class="activity-btn-icon">🥾</span>
+              <span class="activity-btn-label" data-i18n="act_trekking">Trekking</span>
+            </button>
+            <button type="button" class="activity-btn active" data-activity="sightseeing" role="radio" aria-checked="true">
+              <span class="activity-btn-icon">🏛️</span>
+              <span class="activity-btn-label" data-i18n="act_sightseeing">Sightseeing</span>
+            </button>
+            <button type="button" class="activity-btn" data-activity="road" role="radio" aria-checked="false">
+              <span class="activity-btn-icon">🚗</span>
+              <span class="activity-btn-label" data-i18n="act_road">Road Travel</span>
+            </button>
+            <button type="button" class="activity-btn" data-activity="outdoor" role="radio" aria-checked="false">
+              <span class="activity-btn-icon">⛺</span>
+              <span class="activity-btn-label" data-i18n="act_outdoor">Outdoor Activities</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Context-Aware Briefing Grid (Requirements 2, 3, 7, 8) -->
+        <div class="shield-briefing-grid" id="shield-briefing-grid">
+          
+          <!-- Column 1: Contextual Hazard & Terrain Evaluation -->
+          <div class="briefing-card primary-briefing-card">
+            <div class="briefing-card-header">
+              <div class="briefing-badge-wrap">
+                <span class="briefing-status-badge badge-favorable" id="shield-status-badge">
+                  <span class="status-dot"></span>
+                  <span id="shield-status-text">FAVORABLE METEOROLOGICAL WINDOW</span>
+                </span>
+                <span class="briefing-activity-pill" id="shield-activity-pill">Sightseeing</span>
+              </div>
+              <h3 class="briefing-location-heading" id="shield-heading">
+                Safety Briefing for Sightseeing in Manali
+              </h3>
+            </div>
+
+            <!-- Factor Analysis List -->
+            <div class="briefing-factors">
+              <div class="factor-row">
+                <div class="factor-icon-box">🌡️</div>
+                <div class="factor-content">
+                  <span class="factor-label" data-i18n="factor_thermal_label">Thermal Condition & Heat Index</span>
+                  <p class="factor-text" id="shield-factor-thermal">Moderate temperature recorded. Low thermal stress risk.</p>
+                </div>
+              </div>
+
+              <div class="factor-row">
+                <div class="factor-icon-box">🌧️</div>
+                <div class="factor-content">
+                  <span class="factor-label" data-i18n="factor_precip_label">Precipitation & Flash Hazard</span>
+                  <p class="factor-text" id="shield-factor-precip">Dry conditions observed. Minimal slippery surface hazard.</p>
+                </div>
+              </div>
+
+              <div class="factor-row">
+                <div class="factor-icon-box">💨</div>
+                <div class="factor-content">
+                  <span class="factor-label" data-i18n="factor_wind_label">Wind Velocity & Atmospheric Stability</span>
+                  <p class="factor-text" id="shield-factor-wind">Gentle breeze. Favorable for walking and photography.</p>
+                </div>
+              </div>
+
+              <div class="factor-row">
+                <div class="factor-icon-box">🏔️</div>
+                <div class="factor-content">
+                  <span class="factor-label" data-i18n="factor_terrain_label">Terrain & Regional Geography Context</span>
+                  <p class="factor-text" id="shield-factor-terrain">High Altitude Hill Station (2,050m) • Mountainous terrain precautions apply.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="briefing-disclaimer-note">
+              <span data-i18n="briefing_disclaimer_note">Note: Meteorological evaluation does not guarantee absolute safety. Environmental conditions in India can change abruptly.</span>
+            </div>
+          </div>
+
+          <!-- Column 2: Prominent "What should I do now?" Callout Box (Requirement 8) -->
+          <div class="briefing-card action-now-card">
+            <div class="action-card-header">
+              <div class="action-card-icon-wrap">⚡</div>
+              <div>
+                <span class="action-eyebrow" data-i18n="action_eyebrow">PRACTICAL ACTION PROTOCOL</span>
+                <h3 class="action-card-title" data-i18n="action_now_title">What should I do now?</h3>
+              </div>
+            </div>
+
+            <p class="action-intro-text" id="shield-action-intro" data-i18n="action_intro_default">
+              Immediate recommended precautions for your chosen activity under current conditions:
+            </p>
+
+            <ul class="action-checklist" id="shield-action-list">
+              <!-- Dynamically populated based on activity and live weather -->
+            </ul>
+
+            <!-- Official Guidance Portals & Direct Links -->
+            <div class="official-guidance-box">
+              <div class="official-guidance-head">
+                <span class="guidance-head-icon">🏛️</span>
+                <strong data-i18n="official_guidance_head">Official Guidance & Verification</strong>
+              </div>
+              <p class="guidance-desc" data-i18n="official_guidance_desc">
+                Cross-verify critical route advisories directly with Government of India statutory authorities:
+              </p>
+              <div class="official-links-grid">
+                <a href="https://mausam.imd.gov.in" target="_blank" rel="noopener noreferrer" class="gov-link-btn" title="India Meteorological Department">
+                  <span>IMD Mausam (Weather)</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a href="https://ndma.gov.in" target="_blank" rel="noopener noreferrer" class="gov-link-btn" title="National Disaster Management Authority">
+                  <span>NDMA Disaster Alerts</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a href="tel:1363" class="gov-link-btn gov-link-tel" title="Ministry of Tourism Toll-Free Helpline">
+                  <span>Tourist Helpline 1363</span>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Separate Emergency Alerts Section -->
+    <section class="alerts-section" id="emergency-alerts">
+      <div class="container">
+        
+        <div class="section-header-block">
+          <div class="section-title-wrap">
+            <span class="section-tag-red" data-i18n="alert_section_tag">HAZARDS & WARNING FEED</span>
+            <h2 class="section-title" data-i18n="alert_section_title">Active Emergency & Safety Alerts</h2>
+            <p class="section-sub" data-i18n="alert_section_sub">Categorized regional alerts, road blockages, natural hazard warnings, and district travel advisories.</p>
+          </div>
+          
+          <!-- Official Warning Feed Status Notice -->
+          <div class="simulation-alert-box" role="note">
+            <div class="sim-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <div class="sim-content">
+              <strong data-i18n="sim_notice_head">OFFICIAL WARNING FEED STATUS</strong>
+              <p data-i18n="sim_notice_body">Official alert feed (IMD / NDMA CAP-CP) is not connected. Official alerts are currently unavailable. TouristSafe never presents simulated alerts as real warnings. For genuine official bulletins, visit mausam.imd.gov.in or dial 112.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alert Filter Tabs -->
+        <div class="alerts-filter-bar">
+          <div class="filter-buttons" role="tablist" aria-label="Filter alerts by severity">
+            <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+              <span data-i18n="filter_all">All Alerts</span> (<span id="count-all">0</span>)
+            </button>
+            <button type="button" class="filter-btn filter-high" data-filter="high" role="tab" aria-selected="false">
+              <span class="filter-indicator ind-red"></span>
+              <span data-i18n="filter_high">High Severity (Red)</span> (<span id="count-high">0</span>)
+            </button>
+            <button type="button" class="filter-btn filter-mod" data-filter="moderate" role="tab" aria-selected="false">
+              <span class="filter-indicator ind-orange"></span>
+              <span data-i18n="filter_moderate">Moderate Caution (Orange)</span> (<span id="count-mod">0</span>)
+            </button>
+            <button type="button" class="filter-btn filter-safe" data-filter="advisory" role="tab" aria-selected="false">
+              <span class="filter-indicator ind-blue"></span>
+              <span data-i18n="filter_advisory">Advisory & Normal (Blue)</span> (<span id="count-safe">0</span>)
+            </button>
+          </div>
+
+          <!-- Alert Audio Alarm Demonstration Button -->
+          <div class="alarm-demo-wrap">
+            <button type="button" class="alarm-trigger-btn" id="alarm-sound-btn" title="Test Emergency Siren Tone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              </svg>
+              <span id="alarm-btn-label" data-i18n="alarm_demo_btn">Test Alert Siren</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Alerts Container -->
+        <div class="alerts-feed" id="alerts-container" aria-live="polite">
+          <!-- Populated dynamically by script.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Verified Safe Zones & Emergency Facilities Section -->
+    <section class="safe-zones-section" id="safe-zones">
+      <div class="container">
+        
+        <div class="section-header-block">
+          <div class="section-title-wrap">
+            <span class="section-tag-navy" data-i18n="safezones_tag">DESIGNATED SHELTERS & EMERGENCY FACILITIES</span>
+            <h2 class="section-title" data-i18n="safezones_title">Nearby Safe Zones & Emergency Services</h2>
+            <p class="section-sub" data-i18n="safezones_sub">Verification status for local hospitals, police stations, and officially designated disaster shelters.</p>
+          </div>
+        </div>
+
+        <div class="safe-zones-card" id="safe-zones-card">
+          <!-- Populated dynamically by script.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Safety Instructions & Guidelines Section -->
+    <section class="safety-section" id="safety-guide">
+      <div class="container">
+        
+        <div class="section-header-block">
+          <div class="section-title-wrap">
+            <span class="section-tag-navy" data-i18n="safety_section_tag">TRAVEL ADVISORY GUIDELINES</span>
+            <h2 class="section-title" data-i18n="safety_section_title">Tourist Safety Instructions by Terrain & Hazard</h2>
+            <p class="section-sub" data-i18n="safety_section_sub">Essential precautionary standard operating procedures for domestic and international travelers visiting India.</p>
+          </div>
+        </div>
+
+        <!-- Safety Accordion / Grid of Instructions -->
+        <div class="safety-grid">
+          
+          <!-- Guide 1: Monsoons & Coastal -->
+          <div class="safety-card">
+            <div class="safety-card-header bg-monsoon">
+              <div class="safety-card-icon">🌊</div>
+              <div class="safety-card-title-group">
+                <h3 class="safety-card-title" data-i18n="guide_monsoon_title">Monsoon & Coastal Surges</h3>
+                <span class="safety-card-subtitle" data-i18n="guide_monsoon_sub">Beaches, river valleys, and lowlands</span>
+              </div>
+            </div>
+            <div class="safety-card-body">
+              <ul class="safety-points">
+                <li data-i18n="guide_monsoon_1"><strong>Respect Red Flags on Beaches:</strong> Never enter sea waters when lifeguards fly red caution flags (common in Goa, Puri, Kovalam, Chennai).</li>
+                <li data-i18n="guide_monsoon_2"><strong>Avoid Riverbank Camping:</strong> Mountain rivers (Beas, Ganga, Teesta) swell rapidly without warning due to upstream cloudbursts.</li>
+                <li data-i18n="guide_monsoon_3"><strong>Steer Clear of Waterlogged Roads:</strong> Avoid driving through standing water; hidden manholes and submerged bridge causeways pose severe hazards.</li>
+                <li data-i18n="guide_monsoon_4"><strong>Monitor High Tide Timings:</strong> Coastal strolls in Mumbai or Rameshwaram during high tides can suddenly isolate tourists on rock formations.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Guide 2: Mountain & High Altitude -->
+          <div class="safety-card">
+            <div class="safety-card-header bg-mountain">
+              <div class="safety-card-icon">🏔️</div>
+              <div class="safety-card-title-group">
+                <h3 class="safety-card-title" data-i18n="guide_mountain_title">Mountain & Landslide Protocol</h3>
+                <span class="safety-card-subtitle" data-i18n="guide_mountain_sub">Himachal, Uttarakhand, Kashmir, Sikkim</span>
+              </div>
+            </div>
+            <div class="safety-card-body">
+              <ul class="safety-points">
+                <li data-i18n="guide_mountain_1"><strong>Acclimatize Gradually:</strong> At altitudes above 2,500m (Leh, Gulmarg, Rohtang), take 24–48 hours of rest to prevent Acute Mountain Sickness (AMS).</li>
+                <li data-i18n="guide_mountain_2"><strong>Watch Falling Rock Triggers:</strong> Landslides occur abruptly on steep cuts during or right after rainfall. Never halt your vehicle under loose scree slopes.</li>
+                <li data-i18n="guide_mountain_3"><strong>Hire Registered Mountain Guides:</strong> Only trek with guides certified by the Indian Mountaineering Foundation (IMF) or State Tourism Boards.</li>
+                <li data-i18n="guide_mountain_4"><strong>Check Highway Pass Permits:</strong> Mountain passes (Atal Tunnel, Zoji La, Khardung La) close dynamically based on black ice and weather.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Guide 3: Heatwaves & Desert Survival -->
+          <div class="safety-card">
+            <div class="safety-card-header bg-heat">
+              <div class="safety-card-icon">☀️</div>
+              <div class="safety-card-title-group">
+                <h3 class="safety-card-title" data-i18n="guide_heat_title">Heatwave & Desert Survival</h3>
+                <span class="safety-card-subtitle" data-i18n="guide_heat_sub">Rajasthan, Delhi NCR, Central Plains</span>
+              </div>
+            </div>
+            <div class="safety-card-body">
+              <ul class="safety-points">
+                <li data-i18n="guide_heat_1"><strong>Electrolyte Hydration:</strong> Drink Oral Rehydration Salts (ORS), coconut water, or nimbu pani regularly, even if not feeling thirsty.</li>
+                <li data-i18n="guide_heat_2"><strong>Avoid Peak Afternoon Sun (12 PM – 4 PM):</strong> Schedule fort visits and outdoor monuments in early morning hours (6 AM – 10 AM) or sunset.</li>
+                <li data-i18n="guide_heat_3"><strong>Dress in Loose, Breathable Cotton:</strong> Full sleeves shield against UV burns and hot desert winds (the infamous 'Loo').</li>
+                <li data-i18n="guide_heat_4"><strong>Identify Heatstroke Warning Signs:</strong> Confusion, nausea, cessation of sweat, or high fever require immediate cold packs and emergency 108 medical care.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Guide 4: Solo & Women Tourist Safety -->
+          <div class="safety-card">
+            <div class="safety-card-header bg-women">
+              <div class="safety-card-icon">🛡️</div>
+              <div class="safety-card-title-group">
+                <h3 class="safety-card-title" data-i18n="guide_women_title">Women & Solo Tourist Safeguards</h3>
+                <span class="safety-card-subtitle" data-i18n="guide_women_sub">Pan-India travel security protocols</span>
+              </div>
+            </div>
+            <div class="safety-card-body">
+              <ul class="safety-points">
+                <li data-i18n="guide_women_1"><strong>Save Dedicated Women Helpline 1091:</strong> Program 1091 and 112 on speed dial with location sharing enabled in messaging apps.</li>
+                <li data-i18n="guide_women_2"><strong>Use Verified Transit & Prepaid Counters:</strong> At airports and railway stations, opt for government prepaid taxi booths or verified app-based cabs.</li>
+                <li data-i18n="guide_women_3"><strong>Female Compartments & Waiting Rooms:</strong> Indian Railways and metro systems (Delhi, Chennai, Mumbai) provide designated women coaches and security guards.</li>
+                <li data-i18n="guide_women_4"><strong>Verify Hotel Registration:</strong> Check that your accommodation is officially approved by the Ministry of Tourism or reputable state tourism corporations.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Interactive Tourist Readiness Checklist -->
+        <div class="checklist-card">
+          <div class="checklist-header">
+            <div class="checklist-icon">📋</div>
+            <div>
+              <h3 class="checklist-title" data-i18n="checklist_title">Interactive Tourist Departure Readiness Checklist</h3>
+              <p class="checklist-desc" data-i18n="checklist_desc">Check off critical safety milestones before beginning your journey. Your progress is saved automatically.</p>
+            </div>
+          </div>
+          <div class="checklist-items" id="safety-checklist">
+            <label class="checklist-label">
+              <input type="checkbox" id="check-1">
+              <span class="check-box-custom"></span>
+              <span class="check-text" data-i18n="chk_1">Verified 112 and 1363 numbers saved in mobile address book</span>
+            </label>
+            <label class="checklist-label">
+              <input type="checkbox" id="check-2">
+              <span class="check-box-custom"></span>
+              <span class="check-text" data-i18n="chk_2">Downloaded offline maps & recorded hotel address in local script</span>
+            </label>
+            <label class="checklist-label">
+              <input type="checkbox" id="check-3">
+              <span class="check-box-custom"></span>
+              <span class="check-text" data-i18n="chk_3">Carrying basic emergency first-aid kit with ORS sachets & personal medication</span>
+            </label>
+            <label class="checklist-label">
+              <input type="checkbox" id="check-4">
+              <span class="check-box-custom"></span>
+              <span class="check-text" data-i18n="chk_4">Checked current IMD & state disaster alerts for target travel route</span>
+            </label>
+            <label class="checklist-label">
+              <input type="checkbox" id="check-5">
+              <span class="check-box-custom"></span>
+              <span class="check-text" data-i18n="chk_5">Shared travel itinerary & live emergency tracking with a family member or trusted friend</span>
+            </label>
+          </div>
+          <div class="checklist-footer">
+            <span id="checklist-counter">0 of 5 Completed</span>
+            <button type="button" id="reset-checklist-btn" class="btn-text-small" data-i18n="chk_reset">Reset Checklist</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Comprehensive National Emergency Directory Section -->
+    <section class="helplines-section" id="emergency-helplines">
+      <div class="container">
+        
+        <div class="section-header-block">
+          <div class="section-title-wrap">
+            <span class="section-tag-navy" data-i18n="helpline_section_tag">VERIFIED EMERGENCY DIRECTORY</span>
+            <h2 class="section-title" data-i18n="helpline_section_title">Official Pan-India Emergency Assistance Numbers</h2>
+            <p class="section-sub" data-i18n="helpline_section_sub">Toll-free emergency contact infrastructure operated by the Government of India and law enforcement.</p>
+          </div>
+        </div>
+
+        <div class="directory-grid">
+          
+          <div class="directory-card highlight-card">
+            <div class="directory-top">
+              <span class="dir-badge" data-i18n="badge_all_emergency">All-in-One 24x7</span>
+              <div class="dir-num">112</div>
+            </div>
+            <h3 class="dir-title" data-i18n="dir_112_title">National Emergency Response System (ERSS)</h3>
+            <p class="dir-desc" data-i18n="dir_112_desc">Single unified pan-India emergency number for immediate Police, Fire, Ambulance, and Disaster assistance.</p>
+            <a href="tel:112" class="btn btn-danger dir-call-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+              <span>Dial 112 Now</span>
+            </a>
+          </div>
+
+          <div class="directory-card">
+            <div class="directory-top">
+              <span class="dir-badge-blue" data-i18n="badge_tourist_ministry">Ministry of Tourism</span>
+              <div class="dir-num">1363</div>
+            </div>
+            <h3 class="dir-title" data-i18n="dir_1363_title">Incredible India 24x7 Multi-lingual Tourist Helpline</h3>
+            <p class="dir-desc" data-i18n="dir_1363_desc">Toll-free tourist guidance supported in 12 languages including English, Hindi, Tamil, German, French, Spanish, and Russian.</p>
+            <a href="tel:1363" class="btn btn-outline dir-call-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+              <span>Dial 1363 (Tourist)</span>
+            </a>
+          </div>
+
+          <div class="directory-card">
+            <div class="directory-top">
+              <span class="dir-badge-orange" data-i18n="badge_disaster_hq">Disaster Response</span>
+              <div class="dir-num">1078</div>
+            </div>
+            <h3 class="dir-title" data-i18n="dir_1078_title">National Disaster Management Authority (NDMA)</h3>
+            <p class="dir-desc" data-i18n="dir_1078_desc">National disaster control room reporting floods, earthquakes, landslides, cyclones, and orchestrating rescue forces.</p>
+            <a href="tel:1078" class="btn btn-outline dir-call-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+              <span>Dial 1078 (NDMA)</span>
+            </a>
+          </div>
+
+          <div class="directory-card">
+            <div class="directory-top">
+              <span class="dir-badge-pink" data-i18n="badge_women_hq">Women Protection</span>
+              <div class="dir-num">1091</div>
+            </div>
+            <h3 class="dir-title" data-i18n="dir_1091_title">National Women Safety & Distress Helpline</h3>
+            <p class="dir-desc" data-i18n="dir_1091_desc">Round-the-clock emergency assistance, rapid patrol dispatch, and protective custody for women travelers across all Indian states.</p>
+            <a href="tel:1091" class="btn btn-outline dir-call-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+              <span>Dial 1091 (Women)</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About Project & Architecture Section -->
+    <section class="about-section" id="about">
+      <div class="container">
+        
+        <div class="about-card">
+          <div class="about-grid">
+            <div class="about-content">
+              <span class="section-tag-navy" data-i18n="about_tag">HACKATHON ARCHITECTURE & VISION</span>
+              <h2 class="about-title" data-i18n="about_title">About TouristSafe India</h2>
+              <p class="about-lead" data-i18n="about_lead">
+                India is one of the world's most geographically diverse tourist landscapes—spanning Himalayan glaciers, desert plains, dense rainforests, and thousands of kilometers of coastline.
+              </p>
+              <p data-i18n="about_p1">
+                TouristSafe was engineered as a rapid emergency management dashboard prototype designed to solve critical tourist information vacuums during flash floods, cyclonic swells, sudden heatwaves, or mountain landslides.
+              </p>
+              <p data-i18n="about_p2">
+                Built strictly with semantic, lightweight, dependency-free vanilla web technologies (HTML5, CSS3, JavaScript ES6+), it provides frictionless performance even across low-bandwidth 2G/3G mobile networks in remote travel corridors.
+              </p>
+              
+              <div class="tech-stack-pills">
+                <span class="tech-pill">Semantic HTML5</span>
+                <span class="tech-pill">Modular CSS3 Grid/Flexbox</span>
+                <span class="tech-pill">Vanilla JavaScript ES6+</span>
+                <span class="tech-pill">Tri-lingual (EN / தமிழ் / हिन्दी)</span>
+                <span class="tech-pill">Zero External Frameworks</span>
+                <span class="tech-pill">Local Development Ready</span>
+              </div>
+            </div>
+
+            <div class="about-highlights-box">
+              <h3 class="highlight-box-title" data-i18n="about_box_title">Project Implementation Highlights</h3>
+              <ul class="highlight-list">
+                <li>
+                  <strong>🌦️ Real-Time Responsive Cards:</strong>
+                  <span>Instant thermal, moisture, precipitation, and wind vector status with normalized ranges.</span>
+                </li>
+                <li>
+                  <strong>🚨 Tiered Emergency Severity:</strong>
+                  <span>Categorized Red (High), Orange (Moderate), and Blue (Advisory) warnings with verified action steps.</span>
+                </li>
+                <li>
+                  <strong>🌐 Full Tri-lingual Switching:</strong>
+                  <span>Dynamically toggles all interfaces between English, Tamil (தமிழ்), and Hindi (हिन्दी) in-memory.</span>
+                </li>
+                <li>
+                  <strong>🔊 Web Audio API Siren:</strong>
+                  <span>Integrated browser audio synthesizer for simulating emergency alert siren tones offline.</span>
+                </li>
+                <li>
+                  <strong>📱 Fully Mobile Responsive:</strong>
+                  <span>Touch-friendly controls, quick SOS drawer, and legible typography across all screen ratios.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-text">
+            <span class="brand-name">Tourist<span class="highlight">Safe</span></span>
+            <span class="brand-sub">India Tourist Emergency & Weather Alert System</span>
+          </div>
+          <p class="footer-tagline" data-i18n="footer_tagline">Empowering travelers with clear, actionable safety telemetry across India's vibrant tourist destinations.</p>
+        </div>
+        <div class="footer-links-group">
+          <h4 class="footer-heading" data-i18n="footer_nav_heading">Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home" data-i18n="nav_home">Home</a></li>
+            <li><a href="#weather-dashboard" data-i18n="nav_weather">Weather Dashboard</a></li>
+            <li><a href="#safe-journey-shield" data-i18n="nav_shield">Safe Journey Shield</a></li>
+            <li><a href="#emergency-alerts" data-i18n="nav_alerts">Emergency Alerts</a></li>
+            <li><a href="#safe-zones" data-i18n="nav_safe_zones">Safe Zones & Shelters</a></li>
+            <li><a href="#safety-guide" data-i18n="nav_safety">Safety Instructions</a></li>
+            <li><a href="#emergency-helplines" data-i18n="nav_helpline">National Helplines</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4 class="footer-heading" data-i18n="footer_disclaimer_heading">Prototype Disclaimer</h4>
+          <p class="footer-disclaimer-text" data-i18n="footer_disclaimer_text">
+            Developed exclusively for hackathon demonstration. Meteorological and hazard data are simulated. For live emergencies, always dial 112 or contact the India Meteorological Department (IMD).
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TouristSafe India. Hackathon Open Prototype. Built with HTML, CSS &amp; JavaScript.</p>
+        <a href="#top" class="back-to-top" aria-label="Back to top">
+          <span data-i18n="back_to_top">Back to Top &uarr;</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SOS 112 Quick Action Modal Dialog -->
+  <div class="modal-overlay hidden" id="sos-modal" role="dialog" aria-modal="true" aria-labelledby="sos-modal-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="sos-modal-icon">🚨</div>
+          <div>
+            <h3 class="modal-title" id="sos-modal-title" data-i18n="sos_modal_title">India All-Emergency Dispatch: 112</h3>
+            <span class="modal-sub" data-i18n="sos_modal_sub">Police • Ambulance • Fire • Disaster Rescue</span>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" id="sos-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-alert-box">
+          <strong data-i18n="sos_modal_warning">When calling 112, be prepared to clearly state:</strong>
+          <ol class="modal-steps">
+            <li data-i18n="sos_step_1">Your precise current location (City, Road/NH, Landmark, or Hotel name).</li>
+            <li data-i18n="sos_step_2">Nature of hazard: Medical emergency, Landslide, Flash flood, or Crime.</li>
+            <li data-i18n="sos_step_3">Number of persons affected and if children or seniors require urgent assistance.</li>
+            <li data-i18n="sos_step_4">Your preferred language: Operators are trained to dispatch in Hindi, English, and regional languages.</li>
+          </ol>
+        </div>
+        <div class="modal-call-actions">
+          <a href="tel:112" class="btn btn-danger btn-block modal-dial-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+            <span data-i18n="sos_dial_now">Direct Dial 112 (Toll Free)</span>
+          </a>
+          <a href="tel:1363" class="btn btn-outline btn-block">
+            <span data-i18n="sos_dial_tourist">Tourist Helpline: 1363</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Alert Box -->
+  <div class="toast-notification hidden" id="toast-message" role="status" aria-live="polite">
+    <span class="toast-icon" id="toast-icon">ℹ️</span>
+    <span class="toast-text" id="toast-text">Notification message</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
